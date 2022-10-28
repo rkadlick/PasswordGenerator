@@ -10,6 +10,7 @@ Password Generator is an that provides randomly generated passwords.
 Password Generator is an application created as a project to learn and improve Android developing skills. It turned into be a fully completed 
 and comprehensive application that can create an infinite amount of randomly generated passwords.
 
+
 ## Features
 
 The android app lets you:
