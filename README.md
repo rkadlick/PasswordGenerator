@@ -22,13 +22,13 @@ The android app lets you:
 
 <table>
   <tr>
-    <td> <img src="screenshot1.png"  alt="1" width = 360px height = 640px ></td>
-    <td><img src="screenshot2.png" alt="2" width = 360px height = 640px></td>
-    <td><img src="screenshot3.png" alt="3" width = 360px height = 640px></td>
+    <td> <img src="/readme/screenshot1.png"  alt="1" width = 360px height = 640px ></td>
+    <td><img src="/readme/screenshot2.png" alt="2" width = 360px height = 640px></td>
+    <td><img src="/readme/screenshot3.png" alt="3" width = 360px height = 640px></td>
    </tr> 
    <tr>
-    <td><img src="screenshot4.png" alt="4" width = 360px height = 640px></td>
-    <td><img src="screenshot5.png" alt="5" width = 360px height = 640px></td>
+    <td><img src="/readme/screenshot4.png" alt="4" width = 360px height = 640px></td>
+    <td><img src="/readme/screenshot5.png" alt="5" width = 360px height = 640px></td>
   </td>
   </tr>
 </table>
