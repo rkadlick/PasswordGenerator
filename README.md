@@ -23,7 +23,7 @@ The android app lets you:
 
 <table>
   <tr>
-    <td> <img src="/readme/screenshot1.png"  alt="1" width = 360px height = 640px ></td>
+    <td> <img src="/readme/screenshot1.png"  alt="1" ></td>
     <td><img src="/readme/screenshot2.png" alt="2" width = 360px height = 640px></td>
     <td><img src="/readme/screenshot3.png" alt="3" width = 360px height = 640px></td>
    </tr> 
