@@ -3,7 +3,7 @@
 <img src="/readme/pg_logo.png" align="left"
 width="200" hspace="10" vspace="10">
 
-Password Generator is an that provides randomly generated passwords.
+Password Generator is an Android that provides randomly generated passwords.
 
 ## About
 
