@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="initial_slider_values">
+        <item>8.0</item>
+        <item>9.0</item>
+        <item>10.0</item>
+        <item>11.0</item>
+        <item>12.0</item>
+        <item>13.0</item>
+        <item>14.0</item>
+        <item>15.0</item>
+        <item>16.0</item>
+        <item>17.0</item>
+        <item>18.0</item>
+        <item>19.0</item>
+        <item>20.0</item>
+        <item>21.0</item>
+        <item>22.0</item>
+        <item>23.0</item>
+        <item>24.0</item>
+        <item>25.0</item>
+        <item>26.0</item>
+        <item>27.0</item>
+        <item>28.0</item>
+        <item>29.0</item>
+        <item>30.0</item>
+    </array>
+</resources>

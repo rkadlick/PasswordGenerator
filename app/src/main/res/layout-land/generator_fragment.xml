@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.passwordgenerator.ui.GeneratorViewModel" />
+
+        <variable
+            name="generatorFragment"
+            type="com.example.passwordgenerator.ui.GeneratorFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/backgroundColor">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/generatorTitle"
+            style="@style/TextAppearance.App.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/password_generator"
+            android:textColor="?attr/textFillColor"
+            app:layout_constraintBottom_toTopOf="@id/passwordResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <RelativeLayout
+            android:id="@+id/passwordResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="?attr/colorSecondary"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/options"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/generatorTitle">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/resultText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/password_result"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:padding="10dp"
+                android:scrollHorizontally="true"
+                android:text="@{viewModel.generatedPassword.toString()}"
+                android:textColor="?attr/textFillColor"
+                android:textIsSelectable="true"
+                android:textSize="20sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/options"
+            style="@style/TextAppearance.App.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/options"
+            android:textColor="?attr/textAppearanceCaption"
+            app:layout_constraintBottom_toTopOf="@id/landscape_options"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordResult" />
+
+        <ScrollView
+            android:id="@+id/landscape_options"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:isScrollContainer="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/options"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:overScrollMode="always"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:id="@+id/column1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="350dp"
+                        android:layout_height="0.75dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/darker_gray"
+                        app:layout_constraintBottom_toTopOf="@id/passwordLength"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/options" />
+
+                    <LinearLayout
+                        android:id="@+id/passwordLength"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:weightSum="100"
+                        app:layout_constraintTop_toBottomOf="@+id/options">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/characterLength"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="40"
+                            android:text="@string/character_length"
+                            android:textColor="?attr/textFillColor" />
+
+
+                        <com.google.android.material.slider.Slider
+                            android:id="@+id/lengthSlider"
+                            style="@style/Widget.App.MySlider"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="25"
+                            android:contentDescription="@string/password_length"
+                            android:stepSize="1.0"
+                            android:valueFrom="8.0"
+                            android:valueTo="30.0"
+                            app:haloColor="?attr/colorPrimary"
+                            app:thumbColor="?attr/colorPrimary"
+                            app:thumbStrokeColor="?attr/colorOnPrimary"
+                            app:tickVisible="false"
+                            app:trackColorActive="?attr/colorPrimary"
+                            app:values="@array/initial_slider_values" />
+
+                        <TextView
+                            android:id="@+id/lengthNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="35"
+                            android:text="@{viewModel.passwordLength.toString()}"
+                            android:textColor="?attr/textFillColor" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="350dp"
+                        android:layout_height="0.75dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/darker_gray"
+                        app:layout_constraintBottom_toTopOf="@id/includeLowercase"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/passwordLength" />
+
+                    <RelativeLayout
+                        android:id="@+id/includeLowercase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/passwordLength">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/lowercaseText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@id/lowercaseBox"
+                            android:text="@string/include_lowercase_letters"
+                            android:textColor="?attr/textFillColor" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/lowercaseDetails"
+                            style="@style/TextAppearance.App.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@id/lowercaseBox"
+                            android:text="@string/lowercase" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/lowercaseBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:checked="true"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:onCheckedChanged="@{(button, bool)-> generatorFragment.lowercaseChange(bool)}" />
+
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="350dp"
+                        android:layout_height="0.75dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/darker_gray" />
+
+                    <RelativeLayout
+                        android:id="@+id/includeUppercase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/includeLowercase">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/uppercaseText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/include_uppercase_letters"
+                            android:textColor="?attr/textFillColor" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/uppercaseDetails"
+                            style="@style/TextAppearance.App.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@id/uppercaseDetails"
+                            android:text="@string/uppercase" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/uppercaseBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toStartOf="@id/uppercaseBox"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:onCheckedChanged="@{(button, bool)-> generatorFragment.uppercaseChange(bool)}"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/column2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/passwordResult">
+
+                    <View
+                        android:layout_width="350dp"
+                        android:layout_height="0.75dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/darker_gray"
+                        app:layout_constraintBottom_toTopOf="@id/includeNumbers"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/includeUppercase" />
+
+                    <RelativeLayout
+                        android:id="@+id/includeNumbers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/includeUppercase">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/numbersText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@id/numbersBox"
+                            android:text="@string/include_numbers"
+                            android:textColor="?attr/textFillColor" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/numbersDetails"
+                            style="@style/TextAppearance.App.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@id/numbersBox"
+                            android:text="@string/numbers" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/numbersBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:onCheckedChanged="@{(button, bool)-> generatorFragment.numberChange(bool)}" />
+
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="350dp"
+                        android:layout_height="0.75dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/darker_gray"
+                        app:layout_constraintBottom_toTopOf="@id/includeSymbols"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/includeNumbers" />
+
+                    <RelativeLayout
+                        android:id="@+id/includeSymbols"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/includeNumbers">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/symbolsText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@id/symbolsBox"
+                            android:text="@string/include_symbols"
+                            android:textColor="?attr/textFillColor" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/symbolsDetails"
+                            style="@style/TextAppearance.App.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@id/symbolsBox"
+                            android:text="@string/symbols" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/symbolsBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:onCheckedChanged="@{(button, bool)-> generatorFragment.symbolChange(bool)}"
+
+                            />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="350dp"
+                        android:layout_height="0.75dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/darker_gray"
+                        app:layout_constraintBottom_toTopOf="@id/generateButton"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/includeSymbols" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/generateButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="20dp"
+                            android:backgroundTint="?attr/colorPrimary"
+                            android:onClick="@{() -> generatorFragment.generatePassword()}"
+                            android:padding="15dp"
+                            android:text="@string/regenerate"
+                            android:textColor="?attr/backgroundColor"
+                            android:textSize="20sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/copyButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="80dp"
+                            android:layout_toEndOf="@id/generateButton"
+                            android:backgroundTint="?attr/colorPrimary"
+                            android:onClick="@{() -> generatorFragment.copyPassword()}"
+                            android:paddingStart="30dp"
+                            android:paddingTop="15dp"
+                            android:paddingEnd="30dp"
+                            android:paddingBottom="15dp"
+                            android:text="@string/copy"
+                            android:textColor="?attr/backgroundColor"
+                            android:textSize="20sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

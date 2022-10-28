@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="black_text">#FF171513</color> <!-- used for lowercase letters to -->
+    <color name="caption_text">#FF38342E</color>
+    <color name="caption_text_night">#FFf2f2f2</color>
+    <color name="red_text_day">#FFAD0000</color>
+    <color name="blue_text_day">#FF0053AC</color>
+    <color name="green_text_day">#FF1D6100</color>
+    <color name="red_text_night">#FFFA8F8F</color>
+    <color name="blue_text_night">#FF69EFFC</color>
+    <color name="green_text_night">#FF5DEF34</color>
+
+
+    <color name="beige_100">#fffdf8f0</color>
+    <color name="beige_300">#Fff7e7ce</color>
+    <color name="beige_500">#FFdc972b</color>
+
+    <color name="slate_100">#ffd2d1df</color>
+    <color name="slate_500">#FF6c6996</color>
+    <color name="slate_700">#FF4b4968</color>
+    <color name="slate_900">#FF3a3951</color>
+    <color name="slate_1100">#FF21212e</color>
+
+
+</resources>

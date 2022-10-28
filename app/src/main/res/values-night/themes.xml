@@ -1,0 +1,23 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="backgroundColor">@color/slate_1100</item>
+        <item name="textFillColor">@color/white</item>
+        <item name="textAppearanceCaption">@color/caption_text_night</item>
+        <item name="fontFamily">@font/josefin_sans_medium</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/beige_300</item>
+        <item name="colorPrimaryVariant">@color/beige_300</item>
+        <item name="colorOnPrimary">@color/black_text</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/slate_900</item>
+        <item name="colorSecondaryVariant">@color/slate_900</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/backgroundColor</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+</resources>
